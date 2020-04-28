@@ -2484,3 +2484,4 @@ MonoBehaviour:
   audioScore: {fileID: 902480796}
   audioBest: {fileID: 812573702}
   audioBG: {fileID: 1259069139}
+  mixer: {fileID: 24100000, guid: d3ab87ea455baf24894482b513598baa, type: 2}

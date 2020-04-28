@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GamePlayManager : MonoBehaviour
     public AudioSource audioScore;
     public AudioSource audioBest;
     public AudioSource audioBG;
+    public AudioMixer mixer;
 
     void Awake() {
         GenerateLevel();
@@ -29,7 +31,10 @@ public class GamePlayManager : MonoBehaviour
         }
     }
 
-    void Start() { }
+    void Start() {
+        mixer.SetFloat("SFX_VOL", PlayerPrefs.GetFloat("SFX_VOL"));
+        mixer.SetFloat("BG_VOL", PlayerPrefs.GetFloat("BG_VOL"));
+    }
 
     void Update() { }
 

@@ -12,34 +12,27 @@ public class OptionsManager : MonoBehaviour
     public Slider sliderSFX;
     public Slider sliderBG;
 
-    int sfx;
-    int bg;
-
     void Start()
     {
         if (PlayerPrefs.HasKey("SFX_VOL"))
         {
-            sfx = PlayerPrefs.GetInt("SFX_VOL");
-            sliderSFX.value = Convert.ToSingle(sfx);
+            sliderSFX.value = PlayerPrefs.GetFloat("SFX_VOL");
         }
 
         if (PlayerPrefs.HasKey("BG_VOL")) {
-            bg = PlayerPrefs.GetInt("BG_VOL");
-            sliderBG.value = Convert.ToSingle(bg);
+            sliderBG.value = PlayerPrefs.GetFloat("BG_VOL");
         }
     }
 
     void Update()
     {
-        mixer.SetFloat("SFX_VOL", sfx);
-        mixer.SetFloat("BG_VOL", bg);
+        mixer.SetFloat("SFX_VOL", sliderSFX.value);
+        mixer.SetFloat("BG_VOL", sliderBG.value);
     }
 
     public void SaveSettings() {
-        sfx = Convert.ToInt32(sliderSFX.value);
-        bg = Convert.ToInt32(sliderBG.value);
-        PlayerPrefs.SetInt("SFX_VOL", sfx);
-        PlayerPrefs.SetInt("BG_VOL", bg);
+        PlayerPrefs.SetFloat("SFX_VOL", sliderSFX.value);
+        PlayerPrefs.SetFloat("BG_VOL", sliderBG.value);
         PlayerPrefs.Save();
     }
 }
